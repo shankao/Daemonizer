@@ -2,7 +2,7 @@
 	"repositories": [
 		{
 			"type": "vcs",
-			"url": "https://github.com/shankao/system_daemon"
+			"url": "https://github.com/kvz/system_daemon"
 		}
 	],
 	"require": {
