@@ -1,0 +1,16 @@
+{
+	"repositories": [
+		{
+			"type": "vcs",
+			"url": "https://github.com/shankao/system_daemon"
+		}
+	],
+	"require": {
+		"kvz/system_daemon": "dev-master"
+	},
+	"autoload": {
+		"psr-4": {
+			"Daemonizer\\": "src/"
+		}
+	}
+}
