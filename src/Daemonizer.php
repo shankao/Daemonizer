@@ -14,7 +14,6 @@ class Daemonizer {
 	private $uid = null;
 	private $gid = null;
 	private $loglevel = null;
-	private $sleep_time = 10;
 
 	public function php_errors ($errno, $errstr, $errfile, $errline) {
 		call_user_func($this->logfn, "$errstr ($errfile:$errline)");
@@ -78,10 +77,6 @@ class Daemonizer {
 		$this->loglevel = $loglevel;
 	}
 
-	public function set_sleep_time ($sleep_time) {
-		$this->sleep_time = $sleep_time;
-	}
-
 	public function __construct ($daemon_name, $pid_folder) {
 		System_Daemon::setOption('usePEAR', false);
 		$this->logfn = array($this, 'log_daemon');
@@ -121,8 +116,9 @@ class Daemonizer {
 			if ($process->is_enabled()) {
 				$process->run();
 			}
-			if ($process->has_work() === false) {
-				System_Daemon::iterate($this->sleep_time);
+			$sleep_time = $process->sleep_time();
+			if ($sleep_time > 0) {
+				System_Daemon::iterate($sleep_time);
 			} else {
 				pcntl_signal_dispatch();
 			}

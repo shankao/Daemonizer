@@ -10,9 +10,9 @@ class example implements Daemonizer\Daemonizable {
 		$this->time_start = microtime(true);
 	}
 
-	public function has_work() {
+	public function sleep_time() {
 		// This example always has work; never goes to sleep
-		return true;
+		return 0;
 	}
 
 	// do something 1M times in the background and print how long it took
