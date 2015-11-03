@@ -81,10 +81,6 @@ class Daemonizer {
 		System_Daemon::setOption('usePEAR', false);
 		$this->logfn = array($this, 'log_daemon');
 
-		set_error_handler(array($this, 'php_errors'));
-		set_exception_handler(array($this, 'php_exceptions'));
-		register_shutdown_function(array($this, 'log_shutdown'));
-
 		System_Daemon::setOption('appName', $daemon_name);
 		System_Daemon::setOption('logPhpErrors', false);
 		System_Daemon::setOption('appExecutable', 'dummy');	// System_Daemon requires it, then doesn't use it
@@ -111,6 +107,10 @@ class Daemonizer {
 			System_Daemon::stop();
 			return false;
 		}
+
+		set_error_handler(array($this, 'php_errors'));
+		set_exception_handler(array($this, 'php_exceptions'));
+		register_shutdown_function(array($this, 'log_shutdown'));
 
 		// Daemon process from here
 		while (!$this->finish && !System_Daemon::isDying()) {
