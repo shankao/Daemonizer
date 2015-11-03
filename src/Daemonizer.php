@@ -86,6 +86,7 @@ class Daemonizer {
 		register_shutdown_function(array($this, 'log_shutdown'));
 
 		System_Daemon::setOption('appName', $daemon_name);
+		System_Daemon::setOption('logPhpErrors', false);
 		System_Daemon::setOption('appExecutable', 'dummy');	// System_Daemon requires it, then doesn't use it
 		// It's stupid that System_Daemon requires path to have three slashes '/', and the third must match the name of the daemon...
 		System_Daemon::setOption('appPidLocation', $pid_file);
