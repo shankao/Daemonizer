@@ -3,8 +3,8 @@
 This project aims to greatly simplify the creation of system daemons in PHP, by hidding the low-level details
 after a modern class-based interface.
 
-A (very) simple example
--------------------------------
+### A very simple example
+
 Daemon that echoes a string once per second:
 
 ```php
@@ -26,3 +26,6 @@ class example implements Daemonizer\Daemonizable {
 $daemon = new Daemonizer\Daemonizer('example', './././example/example.pid');
 $daemon->run(new example);
 ```
+
+Note: 
+Daemonizer uses [kvz/system_daemon](https://github.com/kvz/system_daemon) internally
