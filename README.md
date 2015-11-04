@@ -13,11 +13,6 @@ class example implements Daemonizer\Daemonizable {
     return 1; // In seconds
   }
   
-  // You can switch on/off the daemon
-  public function is_enabled() {
-    return true;
-  }
-  
   public function run() {
     echo "Hey there!\n";
   }
