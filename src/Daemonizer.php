@@ -127,9 +127,7 @@ class Daemonizer {
 
 		// Daemon process from here
 		while (!$this->finish && !System_Daemon::isDying()) {
-			if ($process->is_enabled()) {
-				$process->run();
-			}
+			$process->run();
 			$sleep_time = $process->sleep_time();
 			if ($sleep_time > 0) {
 				System_Daemon::iterate($sleep_time);

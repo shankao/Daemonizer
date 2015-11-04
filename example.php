@@ -29,11 +29,6 @@ class example implements Daemonizer\Daemonizable {
 		}
 	}
 
-	// You can enable/disable the daemon while still keep it in memory
-	public function is_enabled() {
-		return true;
-	}
-
 	// Use our own logging function
 	static public function log_daemon($message) {
 		$date = date('H:i:s');
