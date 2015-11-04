@@ -15,8 +15,21 @@ class Daemonizer {
 	private $gid = null;
 	private $loglevel = null;
 
+	private function log_backtrace() {
+		$level = 0;
+		foreach(debug_backtrace() as $bt) {
+			if ($level > 2 && !empty($bt['file'])) {
+				call_user_func($this->logfn, "at {$bt['file']}:{$bt['line']}");
+			}
+			$level++;
+		}
+	}
+
 	public function php_errors ($errno, $errstr, $errfile, $errline) {
 		call_user_func($this->logfn, "$errstr ($errfile:$errline)");
+		if ($this->loglevel >= System_Daemon::LOG_DEBUG) {
+			$this->log_backtrace();
+		}
 		return false;
 	}
 
