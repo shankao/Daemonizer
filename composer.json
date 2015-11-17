@@ -1,7 +1,8 @@
 {
 	"name": "shankao/daemonizer",
 	"require": {
-		"php": ">=5.3.0"
+		"php": ">=5.3.0",
+		"ext-posix": "*"
 	},
 	"autoload": {
 		"psr-4": {
