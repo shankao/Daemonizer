@@ -28,6 +28,8 @@ $daemon = new Daemonizer\Daemonizer('example', '././example/example.pid');
 $daemon->run(new example);
 ```
 
+Find a sightly more complete example at https://github.com/shankao/Daemonizer/blob/master/example.php
+
 ### About the PID location parameter
 
 Sadly, using System_Daemon internally has its drawbacks. One of the most visible in Daemonizer is the way that the PID file location has to be indicated: 
