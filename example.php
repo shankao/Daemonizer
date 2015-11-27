@@ -36,7 +36,7 @@ class example implements Daemonizer\Daemonizable {
 	}
 }
 
-$daemon = new Daemonizer\Daemonizer('example', './././example/example.pid');
+$daemon = new Daemonizer\Daemonizer('example', '././example/example.pid');
 $daemon->set_logfn(array('example', 'log_daemon'));
 $daemon->run(new example);
 ?>
