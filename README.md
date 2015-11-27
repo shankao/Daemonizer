@@ -1,6 +1,6 @@
 # Daemonizer
 
-This project aims to greatly simplify the creation of system daemons in PHP, by hidding the low-level details
+This project aims to greatly simplify the creation of very lightweight system daemons in PHP, and hide the low-level details
 after a modern class-based interface.
 
 Daemonizer implements a fast and simple main loop for you, so you don't need to take care of the details.
@@ -35,6 +35,40 @@ Sadly, using System_Daemon internally has its drawbacks. One of the most visible
 2. It **requires** that, after the two slashes, comes a folder with the same name as the daemon's name. In the example before, the "example" folder part. The reason is the same: System_Daemon requires to follow a UNIX system-wide protocol for PID file locations.
 
 This problems will be fixed with the depart from System_Daemon in the future
+
+### Customization functions
+
+Call them before your $daemon->run() call to change some aspects of the daemon:
+
+```php
+set_finishfn(callable $fn)
+```
+Set the function to call when the daemon receives a SIGTERM signal
+
+```php
+set_restartfn(callable $fn)
+```
+Set the function to call when the daemon receives a SIGHUP signal
+
+```php
+set_uid(int)
+```
+Force the daemon's UID to this one
+
+```php
+set_gid(int)
+```
+Force the daemon's GID to this one
+
+```php
+set_logfn(callable $fn)
+```
+Set the function to call for logging
+
+```php
+set_loglevel(int)
+```
+Set System_Daemon's logging level
 
 ### Next steps
 
