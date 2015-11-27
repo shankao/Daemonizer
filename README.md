@@ -38,7 +38,7 @@ This problems will be fixed with the depart from System_Daemon in the future
 
 ### Customization functions
 
-Call them before your $daemon->run() call to change some aspects of the daemon:
+Call them for your Daemonizer object, before the call to run() to change some aspects of the daemon:
 
 ```php
 set_finishfn(callable $fn)
