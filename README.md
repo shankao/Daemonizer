@@ -24,6 +24,7 @@ class example implements Daemonizer\Daemonizable {
 }
 
 $daemon = new Daemonizer\Daemonizer('example', '././example/example.pid');
+// Add customizations. I.e: $daemon->set_logfn('my_logging_function');
 $daemon->run(new example);
 ```
 
